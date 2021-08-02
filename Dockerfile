@@ -13,7 +13,7 @@ FROM base AS builder
 
 # packages needed for building this thing
 RUN apt-get -q update && \
-    apt-get install -y --no-install-recommends curl ca-certificates libcairo2 gcc libpq-dev python-dev && \
+    apt-get install -y --no-install-recommends curl ca-certificates && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # install python dependencies
@@ -49,8 +49,8 @@ RUN cd /opt/graphite/webapp/graphite && ln -s /opt/graphite/conf/local_settings.
 COPY customauth.py /opt/graphite/webapp/graphite/customauth.py
 
 # this creates a new blank user
-COPY django_admin_init.exp /opt/graphite/bin
-RUN chmod +x /opt/graphite/bin/django_admin_init.exp
+COPY initialization /
+RUN chmod +x /initialization
 
 # install the entrypoint last to help with caching
 COPY entrypoint /

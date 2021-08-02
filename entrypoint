@@ -7,16 +7,7 @@ export DJANGO_SETTINGS_MODULE=graphite.settings
 # activate the virtual environment
 . /opt/graphite/bin/activate
 
-# configure django and set up default databases
-/opt/graphite/bin/django-admin makemigrations
-/opt/graphite/bin/django-admin migrate auth
-/opt/graphite/bin/django-admin migrate --run-syncdb
-/opt/graphite/bin/django-admin collectstatic
-
-# only create an admin user if we haven't already
-if [ ! -e "/opt/graphite/storage/graphite.initialized" ]; then
-    /opt/graphite/bin/django_admin_init.exp
-    touch /opt/graphite/storage/graphite.initialized
-fi
+# create the database in a race-condition safe way
+flock -x /opt/graphite/storage/graphite.db /initialization
 
 exec /opt/graphite/bin/gunicorn --env DJANGO_SETTINGS_MODULE=graphite.settings --workers=1 --threads=4 --limit-request-line=0 --max-requests=1000 --timeout=300 --bind=0.0.0.0:8080 graphite.wsgi:application

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+# create the secret key file
+if [ ! -e "/opt/graphite/storage/secret_key.txt" ]; then
+    touch /opt/graphite/storage/secret_key.txt
+    chmod 600 /opt/graphite/storage/secret_key.txt
+    tr -dc A-Za-z0-9 </dev/urandom | head -c 32 > /opt/graphite/storage/secret_key.txt
+fi
+
+# create the database
+/opt/graphite/bin/django-admin migrate
+
+# initialize the static variables
+/opt/graphite/bin/django-admin collectstatic
