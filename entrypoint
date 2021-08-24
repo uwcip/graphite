@@ -10,4 +10,4 @@ export DJANGO_SETTINGS_MODULE=graphite.settings
 # create the database in a race-condition safe way
 flock -x /opt/graphite/storage/graphite.db /initialization
 
-exec /opt/graphite/bin/gunicorn --env DJANGO_SETTINGS_MODULE=graphite.settings --workers=1 --threads=4 --limit-request-line=0 --max-requests=1000 --timeout=300 --bind=0.0.0.0:8080 graphite.wsgi:application
+exec /opt/graphite/bin/gunicorn graphite.wsgi:application --env DJANGO_SETTINGS_MODULE=graphite.settings --limit-request-line=0 "$@"
