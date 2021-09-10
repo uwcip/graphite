@@ -16,4 +16,4 @@ cffi==1.14.6
 dnspython==1.16.0
 greenlet==1.1.1
 pycparser==2.20
-sqlparse==0.4.1
+sqlparse==0.4.2
