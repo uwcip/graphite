@@ -1,14 +1,15 @@
-.*.swp
-*~
-.DS_Store
-.DS_Store?
-.Trashes
-Thumbs.db
+# General exceptions
+**/.*.swp
+**/*~
+**/.DS_Store
+**/.DS_Store?
+**/.Trashes
+**/Thumbs.db
 
 # Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
 
 # ignore the storage directory that we use in our example
 storage
