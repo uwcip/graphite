@@ -1,6 +1,6 @@
 # pinned dependencies
 Django<3
-pyparsing<3
+pyparsing<4
 
 # direct dependencies
 cairocffi==1.3.0
