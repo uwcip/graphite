@@ -11,11 +11,11 @@ psycopg2-binary==2.9.3
 pytz==2021.3
 six==1.16.0
 urllib3==1.26.8
-whitenoise==5.3.0
+whitenoise==6.0.0
 
 # transitive dependencies
 cffi==1.15.0
-Django==2.2.26
+Django==2.2.27
 greenlet==1.1.2
 pycparser==2.21
 pyparsing==2.4.7
