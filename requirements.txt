@@ -15,7 +15,7 @@ urllib3==1.26.8
 
 # transitive dependencies
 cffi==1.15.0
-Django==2.2.27
+Django==2.2.28
 greenlet==1.1.2
 pycparser==2.21
 pyparsing==2.4.7
