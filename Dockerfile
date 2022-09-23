@@ -23,7 +23,7 @@ RUN python3 -m venv --system-site-packages /opt/graphite && \
     pip3 install --no-cache-dir -r /requirements.txt
 
 # install current version of graphite
-ENV VERSION=1.1.8
+ENV VERSION=1.1.10
 RUN mkdir -p /usr/local/src && cd /usr/local/src && \
   curl -OJL https://github.com/graphite-project/whisper/archive/${VERSION}.tar.gz && \
   curl -OJL https://github.com/graphite-project/graphite-web/archive/${VERSION}.tar.gz && \
